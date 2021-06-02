@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <import type="android.view.View"/>
+        <import type="com.yabu.floor.data.Status"/>
+        <variable
+            name="status"
+            type="androidx.databinding.ObservableField&lt;Status&gt;" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/padding_medium"
+        android:clipToPadding="false"
+        android:clipChildren="false">
+
+        <ProgressBar
+            android:id="@+id/livechart_loader"
+            android:layout_width="@dimen/progress_bar_dimen"
+            android:layout_height="@dimen/progress_bar_dimen"
+            android:indeterminateTint="@color/iconInactive"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="@dimen/padding_medium"
+            android:visibility="@{status == null ? View.VISIBLE : View.GONE}"/>
+
+        <TextView
+            android:id="@+id/livechart_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Caption"
+            android:gravity="center"
+            android:drawablePadding="@dimen/padding_small"
+            android:padding="@dimen/padding_medium"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone"
+            android:text="@string/livechart_dataset_error"
+            app:drawableTint="@color/colorOnSurfaceVariant"
+            app:drawableTopCompat="@drawable/ic_baseline_error_outline_24" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:clipToPadding="false"
+            android:clipChildren="false">
+
+            <com.yabu.livechart.view.LiveChart
+                android:id="@+id/livechart_live_chart"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fragment_live_chart_height"
+                app:boundsColor="@color/colorOnSurfaceVariant"
+                app:labelTextColor="@color/colorOnSurfaceVariant"
+                app:positiveColor="@color/green"
+                app:negativeColor="@color/red"
+                app:pathColor="@color/colorOnSurface"
+                app:baselineColor="@color/colorOnSurfaceVariant"
+                app:overlayLineColor="@color/colorOnSurfaceVariant"
+                app:overlayCircleColor="@color/colorPrimary"
+                android:clipToPadding="false" />
+
+            <com.yabu.floor.ui.components.livechart.BoundsSelectorView
+                android:id="@+id/livechart_bounds"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="user"
+            type="com.google.firebase.auth.FirebaseUser" />
+    </data>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorSurface"
+        tools:context=".ui.account.AccountFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                tools:ignore="UseCompoundDrawables">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="start"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/account_toolbar_back"
+                        android:contentDescription="@string/img_content_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_medium"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_baseline_arrow_back_24"
+                        android:onClick="onToolbarBack"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/Title"
+                        android:paddingHorizontal="@dimen/padding_medium"
+                        android:text="@string/account_title"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/account_avatar"
+                    android:layout_width="@dimen/avatar_dimen"
+                    android:layout_height="@dimen/avatar_dimen"
+                    android:layout_gravity="center"
+                    tools:src="@tools:sample/avatars"
+                    android:background="@drawable/circle"
+                    android:layout_marginTop="@dimen/padding_medium"
+                    android:contentDescription="@string/img_content_desc" />
+
+                <TextView
+                    android:id="@+id/account_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_medium"
+                    android:gravity="center"
+                    style="@style/Title"
+                    android:text="@{user.displayName}"
+                    tools:text="Pablo Fuster"/>
+
+                <TextView
+                    android:id="@+id/account_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@{user.email}"
+                    tools:text="pablo@email.com"/>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:id="@+id/account_log_out_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="@dimen/button_min_width"
+                    android:gravity="center"
+                    android:layout_marginBottom="@dimen/padding_medium"
+                    android:paddingHorizontal="@dimen/padding_medium"
+                    android:text="@string/account_log_out"/>
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+</layout>

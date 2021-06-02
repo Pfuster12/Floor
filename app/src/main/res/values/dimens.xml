@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_tiny">4dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_compact">12dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_large">24dp</dimen>
+    <dimen name="padding_big">32dp</dimen>
+    <dimen name="padding_massive">48dp</dimen>
+
+    <dimen name="button_height">40dp</dimen>
+
+    <dimen name="rounded_small">4dp</dimen>
+    <dimen name="rounded_medium">8dp</dimen>
+    <dimen name="rounded_large">16dp</dimen>
+    <dimen name="rounded_full">99dp</dimen>
+
+    <dimen name="icon_dimen">22dp</dimen>
+    <dimen name="icon_dimen_small">18dp</dimen>
+
+    <dimen name="button_min_width">240dp</dimen>
+
+    <dimen name="progress_bar_dimen">20dp</dimen>
+
+    <!-- Splash -->
+    <dimen name="splash_icon">60dp</dimen>
+
+    <!-- Home -->
+    <dimen name="portfolio_toggle_height">40dp</dimen>
+    <dimen name="home_app_bar_height">230dp</dimen>
+    <dimen name="home_search_portfolio_background">90dp</dimen>
+    <dimen name="home_search_portfolio_bar_height">126dp</dimen>
+    <dimen name="home_search_portfolio_index_height">226dp</dimen>
+    <dimen name="home_portfolio_bar_height">68dp</dimen>
+    <dimen name="home_portfolio_title_height">42dp</dimen>
+
+    <!-- Company Details -->
+    <dimen name="fragment_live_chart_height">240dp</dimen>
+    <dimen name="company_detail_logo">32dp</dimen>
+
+    <!-- Portfolio List Item -->
+    <dimen name="portfolio_list_item_livechart_height">60dp</dimen>
+    <dimen name="portfolio_list_item_logo_dimen">42dp</dimen>
+    <dimen name="portfolio_create_logo_dimen">60dp</dimen>
+
+    <!-- Index List Item -->
+    <dimen name="indices_fragment_height">100dp</dimen>
+    <dimen name="index_list_item_livechart_height">40dp</dimen>
+    <dimen name="index_list_item_width">90dp</dimen>
+
+    <!-- News -->
+    <dimen name="news_item_icon">18dp</dimen>
+
+    <!-- Account -->
+    <dimen name="avatar_dimen">60dp</dimen>
+</resources>

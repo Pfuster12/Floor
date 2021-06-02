@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.yabu.floor.data.model.portfolio.PortfolioItem"/>
+        <import type="android.view.View"/>
+        <variable name="portfolioItem"
+            type="PortfolioItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/index_list_item_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_tiny"
+        android:layout_marginVertical="@dimen/padding_small"
+        android:layout_marginStart="@dimen/padding_small"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        tools:context=".view.components.LiveChartFragment">
+
+        <TextView
+            android:id="@+id/index_list_item_ticker_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{portfolioItem.ticker.name}"
+            tools:text="DOW 30"
+            style="@style/Text"
+            android:textSize="12sp"
+            tools:ignore="SmallSp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/index_list_item_ticker_percent"/>
+
+        <com.robinhood.ticker.TickerView
+            android:id="@+id/index_list_item_ticker_percent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{@string/percent(portfolioItem.quote.changePercent)}"
+            app:percentChange="@{portfolioItem.quote.changePercent}"
+            tools:text="1.50%"
+            style="@style/Text"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:paddingStart="@dimen/padding_small"
+            android:paddingEnd="@dimen/padding_tiny"
+            android:gravity="end"
+            app:layout_constraintStart_toEndOf="@id/index_list_item_ticker_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/index_list_item_ticker_name"
+            tools:ignore="SmallSp" />
+
+        <com.yabu.livechart.view.LiveChartView
+            android:id="@+id/index_list_item_live_chart"
+            android:layout_width="@dimen/index_list_item_width"
+            android:layout_height="@dimen/index_list_item_livechart_height"
+            android:layout_marginTop="@dimen/padding_small"
+            app:portfolioItem="@{portfolioItem}"
+            app:pathColor="@color/colorOnSurface"
+            app:secondPathColor="@color/colorOnSurfaceVariant"
+            app:positiveColor="@color/green"
+            app:negativeColor="@color/red"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/index_list_item_ticker_percent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="isInPortfolio"
+            type="androidx.databinding.ObservableBoolean" />
+        <variable
+            name="quote"
+            type="androidx.databinding.ObservableField&lt;com.yabu.floor.data.model.iex.Quote&gt;" />
+        <variable
+            name="company"
+            type="androidx.databinding.ObservableField&lt;com.yabu.floor.data.model.iex.Company&gt;" />
+        <variable
+            name="portfolio"
+            type="androidx.databinding.ObservableField&lt;com.yabu.floor.data.model.portfolio.Portfolio&gt;" />
+        <variable
+            name="handler"
+            type="com.yabu.floor.ui.company.CompanyDetailFragmentHandler" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="ui.company.CompanyDetailFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSurface"
+            android:elevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                tools:ignore="UseCompoundDrawables"
+                android:background="@color/colorSurface"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <ImageView
+                    android:id="@+id/company_detail_back"
+                    android:contentDescription="@string/img_content_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_arrow_back_24"
+                    android:padding="@dimen/padding_medium"
+                    android:elevation="2dp"
+                    android:layout_gravity="center_vertical"
+                    android:onClick="@{handler::onBackClick}"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:hapticFeedbackEnabled="true"/>
+
+                <com.yabu.floor.ui.components.tickerlogo.TickerLogoView
+                    android:id="@+id/company_detail_logo"
+                    android:layout_width="@dimen/company_detail_logo"
+                    android:layout_height="@dimen/company_detail_logo"
+                    app:ticker="@{company.symbol}"
+                    android:layout_gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/company_detail_title"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@{company.symbol}"
+                    tools:text="MSFT"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="@dimen/padding_medium"
+                    android:paddingVertical="@dimen/padding_medium"
+                    style="@style/Title"/>
+            </LinearLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/padding_medium">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="@dimen/padding_medium">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/company_detail_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{company.companyName}"
+                                tools:text="Microsoft"
+                                android:gravity="center_vertical"
+                                style="@style/Caption"/>
+
+                            <TextView
+                                android:id="@+id/company_detail_name_interpunct"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/interpunct"
+                                android:layout_marginStart="@dimen/padding_small"
+                                android:gravity="center_vertical"
+                                android:textStyle="bold"
+                                style="@style/Caption"/>
+
+                            <TextView
+                                android:id="@+id/company_detail_country"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{company.country}"
+                                tools:text="US"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:layout_marginStart="@dimen/padding_small"
+                                android:gravity="center_vertical"
+                                style="@style/Caption"/>
+                        </LinearLayout>
+
+                        <com.robinhood.ticker.TickerView
+                            android:id="@+id/company_detail_quote_price"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{@string/two_decimal_template(quote.latestPrice)}"
+                            tools:text="300.12"
+                            android:gravity="center_vertical"
+                            style="@style/Ticker"/>
+
+                        <com.robinhood.ticker.TickerView
+                            android:id="@+id/company_detail_quote_percent_change"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{@string/change_and_percent(quote.change, quote.changePercent)}"
+                            app:percentChange="@{quote.changePercent}"
+                            tools:text="2.45 (12.58%)"
+                            android:gravity="center_vertical"
+                            style="@style/Title"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/padding_tiny">
+
+                            <TextView
+                                android:id="@+id/company_detail_quote_price_source"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/iex_cloud_source"
+                                android:gravity="center_vertical"
+                                style="@style/Caption"/>
+
+                            <TextView
+                                android:id="@+id/company_detail_quote_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{quote.latestTime}"
+                                tools:text="25 Nov 14:30"
+                                android:gravity="center_vertical"
+                                android:layout_marginStart="@dimen/padding_small"
+                                style="@style/Caption"/>
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/company_detail_market_open_badge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/Badge"
+                            android:text="@{quote.USMarketOpen ? @string/market_open : @string/market_closed}"
+                            android:layout_marginTop="@dimen/padding_small"
+                            tools:text="@string/market_open"/>
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/company_detail_watch_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{isInPortfolio ? @string/unwatch_portfolio_button : @string/watch_portfolio_button}"
+                        android:gravity="center"
+                        tools:text="Unwatch"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="@dimen/padding_tiny"
+                        tools:icon="@drawable/ic_bookmark"
+                        android:drawablePadding="@dimen/padding_medium"
+                        app:icon="@{isInPortfolio ? @drawable/ic_minus : @drawable/ic_bookmark}"
+                        android:enabled="@{portfolio != null &amp;&amp; company != null}"
+                        android:onClick="@{(v) -> handler.onWatchClick(v, portfolio, company)}"
+                        android:hapticFeedbackEnabled="true"/>
+                </LinearLayout>
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/company_detail_live_chart_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/fragment_live_chart_height"
+                    android:name="com.yabu.floor.ui.components.livechart.LiveChartFragment"
+                    android:clipChildren="false"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:clipToPadding="false"/>
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/company_detail_key_stats_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:name="com.yabu.floor.ui.company.CompanyKeyStatsFragment"/>
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/company_detail_company_data_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:name="com.yabu.floor.ui.company.CompanyDataFragment"/>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

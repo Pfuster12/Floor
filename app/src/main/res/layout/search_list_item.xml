@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="item"
+            type="com.yabu.floor.data.model.iex.SearchItem" />
+    </data>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_medium"
+        android:layout_marginHorizontal="@dimen/padding_medium"
+        android:background="@drawable/rectangle_rounded_medium_variant_clipped_ripple"
+        android:padding="@dimen/padding_large">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/search_list_item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{item.securityName}"
+                style="@style/Text.Bold"
+                tools:text="Microsoft"/>
+
+            <TextView
+                android:id="@+id/search_list_item_ticker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_small"
+                android:text="@{item.symbol}"
+                style="@style/Text"
+                tools:text="MSFT"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/search_list_item_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.securityType}"
+            style="@style/Text"
+            tools:text="CS"/>
+    </LinearLayout>
+</layout>

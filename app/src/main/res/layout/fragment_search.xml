@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.yabu.floor.data.model.iex.SearchItem" />
+        <import type="android.view.View"/>
+        <variable
+            name="searchItems"
+            type="java.util.List&lt;SearchItem>" />
+        <import type="com.yabu.floor.data.model.search.SearchHistoryItem" />
+        <variable
+            name="searchHistory"
+            type="java.util.List&lt;SearchHistoryItem>" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.search.SearchFragment">
+
+        <com.yabu.floor.ui.components.searchbar.SearchBarLayout
+            android:id="@+id/search_search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="2dp"
+            android:layout_marginTop="@dimen/padding_small"
+            android:layout_marginBottom="@dimen/padding_small"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/search_no_results"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_results_searches"
+                    android:padding="@dimen/padding_medium"
+                    android:visibility="gone"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/search_history_empty_results"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/empty_recent_searches"
+                    android:padding="@dimen/padding_medium"
+                    android:visibility="@{searchItems.size() > 0 || searchHistory.size() > 0 ? View.GONE : View.VISIBLE}"
+                    android:gravity="center"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/search_history_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/padding_small"
+                    tools:itemCount="3"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:visibility="@{searchItems.size() > 0 ? View.GONE : View.VISIBLE}"
+                    tools:listitem="@layout/search_history_list_item"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/search_results_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"
+                    tools:itemCount="2"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/search_list_item"/>
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/search_sector_performance_fragment"
+                    android:name="com.yabu.floor.ui.search.SectorPerformanceFragment"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/padding_medium"
+                    android:layout_height="wrap_content"
+                    android:minHeight="200dp"
+                    tools:context="com.yabu.floor.ui.search.SectorPerformanceFragment"
+                    tools:layout="@layout/fragment_sector_performance"/>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

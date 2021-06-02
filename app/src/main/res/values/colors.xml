@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#d70a53</color>
+    <color name="colorPrimarySurface">#40D70A53</color>
+    <color name="colorSurface">#1D2028</color>
+    <color name="colorSurfaceVariant">#232630</color>
+    <color name="loader">@color/white</color>
+    <color name="colorOnSurface">#F4F4F4</color>
+    <color name="colorOnSurfaceVariant">#ABABAB</color>
+    <color name="border">@color/colorSurfaceVariant</color>
+    <color name="divider">@color/colorSurfaceVariant</color>
+
+    <color name="adColorPrimary">#FFA480</color>
+
+    <color name="guidelines">#2C303E</color>
+
+    <color name="iconInactive">#989898</color>
+    <color name="iconActive">@color/colorOnSurface</color>
+
+    <color name="datasetSelectorActive">@color/colorPrimary</color>
+    <color name="datasetSelectorInactive">@color/colorOnSurface</color>
+
+    <color name="white">#fff</color>
+
+    <color name="red">#d70a53</color>
+    <color name="redLight">#44d70a53</color>
+
+    <color name="green">#01C194</color>
+    <color name="greenSurface">#4401C194</color>
+    <color name="darkGreen">#03604A</color>
+
+    <color name="googleRed">#EA4335</color>
+</resources>

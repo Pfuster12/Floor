@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="java.util.List"/>
+        <import type="android.view.View"/>
+        <import type="com.yabu.floor.data.Status"/>
+        <variable
+            name="status"
+            type="androidx.databinding.ObservableField&lt;Status&gt;" />
+        <variable
+            name="viewModel"
+            type="com.yabu.floor.ui.home.HomeViewModel" />
+        <variable
+            name="handler"
+            type="com.yabu.floor.ui.home.HomeFragmentHandler" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.home.HomeFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/home_app_bar_height"
+        android:fitsSystemWindows="true"
+        android:background="@color/colorSurface"
+        app:elevation="0dp">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="@dimen/home_search_portfolio_bar_height"
+            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/home_indices_fragment"
+                android:name="com.yabu.floor.ui.home.IndicesFragment"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/home_search_portfolio_bar_height"
+                android:layout_height="@dimen/indices_fragment_height"
+                tools:layout="@layout/fragment_indices"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/home_search_portfolio_background"
+                android:background="@color/colorSurface"
+                app:layout_collapseMode="pin"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_collapseMode="pin">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:padding="@dimen/padding_small"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorSurface">
+
+                    <TextView
+                        android:id="@+id/home_title"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        style="@style/Heading"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:drawablePadding="@dimen/padding_small"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="@dimen/padding_medium"
+                        android:text="@string/my_portfolio_title"/>
+
+                    <com.google.android.material.button.MaterialButtonToggleGroup
+                        android:id="@+id/home_portfolio_toggle_group"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/portfolio_toggle_height"
+                        android:layout_gravity="center"
+                        app:checkedButton="@id/home_portfolio_toggle_default"
+                        app:singleSelection="true"
+                        app:selectionRequired="true"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:layout_marginHorizontal="@dimen/padding_small">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/home_portfolio_toggle_default"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="9sp"
+                            android:text="@string/default_portfolio_toggle"
+                            style="@style/Button.Outlined"
+                            tools:ignore="SmallSp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/home_portfolio_toggle_compact"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:ignore="SmallSp"
+                            android:textSize="9sp"
+                            style="@style/Button.Outlined"
+                            android:text="@string/compact_portfolio_toggle"/>
+                    </com.google.android.material.button.MaterialButtonToggleGroup>
+                </LinearLayout>
+
+                <com.yabu.floor.ui.components.searchbar.SearchBarLayout
+                    android:id="@+id/home_search_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/padding_small" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider"
+                android:layout_gravity="bottom"/>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/home_portfolio"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            tools:listitem="@layout/portfolio_item"
+            android:layout_marginTop="@dimen/padding_tiny"
+            android:layout_marginBottom="@dimen/padding_small"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+        <ProgressBar
+            android:id="@+id/home_loader"
+            android:layout_width="@dimen/progress_bar_dimen"
+            android:layout_height="@dimen/progress_bar_dimen"
+            android:layout_gravity="center"
+            tools:visibility="gone"
+            android:indeterminateTint="@color/colorOnSurfaceVariant"
+            android:visibility="@{status == Status.LOADING ? View.VISIBLE : View.GONE}"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

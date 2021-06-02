@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <import type="com.yabu.floor.ui.components.livechart.ChartBounds"/>
+        <variable
+            name="bounds"
+            type="androidx.databinding.ObservableField&lt;ChartBounds&gt;" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_small"
+        android:padding="@dimen/padding_small">
+
+        <TextView
+            android:id="@+id/bounds_selector_1_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dataset_1_day"
+            style="@style/Text.DatasetSelector"
+            app:isSelected="@{bounds == ChartBounds.ONE_DAY}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/bounds_selector_1_week"/>
+
+        <TextView
+            android:id="@+id/bounds_selector_1_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dataset_1_weekly"
+            style="@style/Text.DatasetSelector"
+            app:isSelected="@{bounds == ChartBounds.ONE_WEEK}"
+            app:layout_constraintTop_toTopOf="@id/bounds_selector_1_day"
+            app:layout_constraintStart_toEndOf="@id/bounds_selector_1_day"
+            app:layout_constraintEnd_toStartOf="@id/bounds_selector_1_month"/>
+
+        <TextView
+            android:id="@+id/bounds_selector_1_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dataset_1_month"
+            style="@style/Text.DatasetSelector"
+            app:isSelected="@{bounds == ChartBounds.ONE_MONTH}"
+            app:layout_constraintTop_toTopOf="@id/bounds_selector_1_day"
+            app:layout_constraintStart_toEndOf="@id/bounds_selector_1_week"
+            app:layout_constraintEnd_toStartOf="@id/bounds_selector_3_months"/>
+
+        <TextView
+            android:id="@+id/bounds_selector_3_months"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dataset_3_months"
+            style="@style/Text.DatasetSelector"
+            app:isSelected="@{bounds == ChartBounds.THREE_MONTHS}"
+            app:layout_constraintTop_toTopOf="@id/bounds_selector_1_day"
+            app:layout_constraintStart_toEndOf="@id/bounds_selector_1_month"
+            app:layout_constraintEnd_toStartOf="@id/bounds_selector_1_year"/>
+
+        <TextView
+            android:id="@+id/bounds_selector_1_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dataset_1_year"
+            style="@style/Text.DatasetSelector"
+            app:isSelected="@{bounds == ChartBounds.ONE_YEAR}"
+            app:layout_constraintTop_toTopOf="@id/bounds_selector_1_day"
+            app:layout_constraintStart_toEndOf="@id/bounds_selector_3_months"
+            app:layout_constraintEnd_toStartOf="@id/bounds_selector_5_years"/>
+
+        <TextView
+            android:id="@+id/bounds_selector_5_years"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dataset_5_years"
+            style="@style/Text.DatasetSelector"
+            app:isSelected="@{bounds == ChartBounds.FIVE_YEARS}"
+            app:layout_constraintTop_toTopOf="@id/bounds_selector_1_day"
+            app:layout_constraintStart_toEndOf="@id/bounds_selector_1_year"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

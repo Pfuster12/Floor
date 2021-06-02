@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:key="@string/features_settings_category_key"
+        app:title="@string/features_settings_category_title"
+        app:icon="@drawable/ic_baseline_extension_20">
+
+        <PreferenceCategory
+            app:key="@string/features_home_category_key"
+            app:title="@string/features_home_category_title">
+
+            <SwitchPreferenceCompat
+                app:key="@string/portfolio_feature_key"
+                app:title="@string/portfolio_feature_title"
+                app:defaultValue="true"/>
+
+            <SwitchPreferenceCompat
+                app:key="@string/portfolio_view_toggle_feature_key"
+                app:title="@string/portfolio_view_toggle_feature_title"
+                app:defaultValue="true"/>
+
+            <SwitchPreferenceCompat
+                app:key="@string/indices_feature_key"
+                app:title="@string/indices_feature_title"
+                app:defaultValue="true"/>
+        </PreferenceCategory>
+
+        <PreferenceCategory
+            app:key="@string/features_company_category_key"
+            app:title="@string/features_comapny_category_title">
+
+            <SwitchPreferenceCompat
+                app:key="@string/company_livechart_feature_key"
+                app:title="@string/company_livechart_feature_title"
+                app:defaultValue="true"/>
+
+            <SwitchPreferenceCompat
+                app:key="@string/company_key_stats_feature_key"
+                app:title="@string/company_key_stats_feature_title"
+                app:defaultValue="true"/>
+
+            <SwitchPreferenceCompat
+                app:key="@string/company_data_feature_key"
+                app:title="@string/company_data_feature_title"
+                app:defaultValue="true"/>
+        </PreferenceCategory>
+    </PreferenceCategory>
+</PreferenceScreen>

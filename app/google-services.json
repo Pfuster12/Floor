@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "870168362470",
+    "project_id": "floor-7dadf",
+    "storage_bucket": "floor-7dadf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:870168362470:android:9a93ff9ed9d800587aaa27",
+        "android_client_info": {
+          "package_name": "com.yabu.floor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "870168362470-mqfs3qh2f3k7c0j1fn89jvsrpok8dqpn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yabu.floor",
+            "certificate_hash": "1459e17e1daf85a71cf4c5870020408501482501"
+          }
+        },
+        {
+          "client_id": "870168362470-n99fbe36v001pdugmipq49kkjvv6b7jt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQdSaQlYul1k4ocpeTt3oxLGhVnxzjw60"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "870168362470-n99fbe36v001pdugmipq49kkjvv6b7jt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

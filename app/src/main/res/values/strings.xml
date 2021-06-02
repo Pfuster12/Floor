@@ -1,0 +1,139 @@
+<resources>
+    <string name="app_name">Floor</string>
+
+    <!-- General -->
+    <string name="img_content_desc">Image/Icon</string>
+    <string name="interpunct">·</string>
+    <string name="back_icon_content_desc">back icon</string>
+    <string name="google_web_client_id">
+        733602821479-b2nfclkvvlhe49hevamls7nd710ff0ns.apps.googleusercontent.com
+    </string>
+
+    <!-- Finance -->
+    <string name="dollar_template">$%1$.2f</string>
+    <string name="two_decimal_template">%1$.2f</string>
+    <string name="percent">%1$.2f%%</string>
+    <string name="positive_percent">+%1$.2f%%</string>
+    <string name="negative_percent">-%1$.2f%%</string>
+    <string name="market_cap_template">$%1$d</string>
+    <string name="zero_percent">0.00%</string>
+    <string name="change_and_percent">%1$.2f (%2$.2f%%)</string>
+
+    <!-- IEX Cloud -->
+    <string name="iex_cloud_source">IEX Cloud</string>
+
+    <!-- Tab Layout -->
+    <string name="home_tab">Home</string>
+    <string name="news_tab">News</string>
+    <string name="search_tab">Search</string>
+    <string name="markets_tab">Markets</string>
+
+    <!-- Home -->
+    <string name="default_portfolio_toggle">Default</string>
+    <string name="compact_portfolio_toggle">Compact</string>
+    <string name="my_portfolio_title">Portfolio</string>
+    <string name="home_index_panel_title">Index Panel</string>
+
+    <!-- Company Detail -->
+    <string name="company_detail_label">Company Detail</string>
+    <string name="watch_portfolio_button">Watch</string>
+    <string name="unwatch_portfolio_button">Unwatch</string>
+    <string name="market_open">Market Open</string>
+    <string name="market_closed">Market Closed</string>
+    <!-- Company Data -->
+    <string name="company_data_title">Company</string>
+    <string name="company_data_name_title">Name</string>
+    <string name="company_data_ceo_title">CEO</string>
+    <string name="company_data_city_title">City</string>
+    <string name="company_data_city_template">%1$s, %2$s</string>
+
+    <!-- Key Stats -->
+    <string name="key_stats_title">Key Stats</string>
+    <string name="key_stats_pe_title">PE Ratio</string>
+    <string name="key_stats_market_cap_title">Market Cap</string>
+    <string name="key_stats_total_revenue_title">Total Revenue</string>
+    <string name="key_stats_eps_title">EPS</string>
+    <string name="key_stats_dividend_yield_title">Dividend Yield</string>
+    <string name="key_stats_52_week_high_title">52 Week High</string>
+    <string name="key_stats_52_week_low_title">52 Week Low</string>
+    <string name="key_stats_52_week_change_title">52 Week Change</string>
+    <string name="key_stats_day_50_moving_average_title">50 Day Moving Average</string>
+    <string name="key_stats_day_200_moving_average_title">200 Day Moving Average</string>
+    <string name="key_stats_next_earnings_date_title">Next Earnings Date</string>
+    <string name="key_stats_next_dividend_date_title">Next Dividend Date</string>
+    <string name="key_stats_year_to_date_change_title">Year to Date Change</string>
+    <string name="key_stats_not_available">N/A</string>
+
+    <!-- LiveChart -->
+    <string name="dataset_1_day">1D</string>
+    <string name="dataset_1_weekly">1W</string>
+    <string name="dataset_1_month">1M</string>
+    <string name="dataset_3_months">3M</string>
+    <string name="dataset_1_year">1Y</string>
+    <string name="dataset_5_years">5Y</string>
+    <string name="livechart_dataset_error">Error getting chart data</string>
+    <string name="news_headlines_title">Headlines</string>
+
+    <!-- Settings -->
+    <string name="settings">Settings</string>
+
+    <!-- Account -->
+    <string name="account">Account</string>
+
+    <!-- Portfolios -->
+    <string name="portfolios_title">Portfolios</string>
+
+    <!-- Feature Toggle -->
+    <string name="features_settings_category_key">feature_category</string>
+    <string name="features_settings_category_title">Feature Toggle</string>
+
+    <!-- Home Toggle -->
+    <string name="features_home_category_key">feature_home_category</string>
+    <string name="features_home_category_title">Home Screen</string>
+
+    <string name="portfolio_feature_key">portfolio_feature</string>
+    <string name="portfolio_feature_title">Portfolio List</string>
+
+    <string name="portfolio_view_toggle_feature_key">portfolio_toggle</string>
+    <string name="portfolio_view_toggle_feature_title">Portfolio View Toggle</string>
+
+    <string name="indices_feature_key">indices_feature</string>
+    <string name="indices_feature_title">Indices List</string>
+
+    <!-- Company Detail Toggle -->
+    <string name="features_company_category_key">feature_company_category</string>
+    <string name="features_comapny_category_title">Company Detail Screen</string>
+
+    <string name="company_livechart_feature_key">company_livechart_feature</string>
+    <string name="company_livechart_feature_title">Company LiveChart</string>
+
+    <string name="company_key_stats_feature_key">company_key_stats_feature</string>
+    <string name="company_key_stats_feature_title">Key Stats</string>
+
+    <string name="company_data_feature_key">company_info_feature</string>
+    <string name="company_data_feature_title">Company Info</string>
+
+    <!-- Portfolio Create/Edit -->
+    <string name="portfolio_logo_content_desc">Portfolio Logo</string>
+    <string name="create_portfolio_title">Create Portfolio</string>
+    <string name="portfolio_name_hint">Portfolio Name</string>
+    <string name="portfolio_description_hint">Description</string>
+    <string name="portfolio_icon_content_description">Portfolio Icon</string>
+
+    <!-- Search -->
+    <string name="search_hint">Search for tickers, funds…</string>
+    <string name="empty_recent_searches">View your recent searches here.</string>
+    <string name="no_results_searches">No Results, try writing the full name or check any typos in the ticker</string>
+    <string name="sector_performance_title">Sector Performance</string>
+
+    <!-- Account -->
+    <string name="account_title">Account</string>
+    <string name="log_in_title">Log In</string>
+    <string name="continue_with_google">Continue With Google</string>
+    <string name="log_in_description">Create your account to store and sync your portfolio in the Floor Cloud</string>
+
+    <string name="google_web_client">870168362470-n99fbe36v001pdugmipq49kkjvv6b7jt.apps.googleusercontent.com</string>
+    <string name="account_log_out">Log Out</string>
+    <string name="login_email_address_hint">Email Address</string>
+    <string name="login_magic_link_sign_in">Magic Link Sign In</string>
+</resources>

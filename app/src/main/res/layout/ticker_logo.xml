@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="android.view.View"/>
+        <import type="com.yabu.floor.data.Status"/>
+        <import type="androidx.databinding.ObservableField"/>
+        <variable name="ticker" type="ObservableField&lt;String>" />
+        <variable name="status" type="ObservableField&lt;Status>" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@drawable/rectangle_rounded_medium_variant"
+        xmlns:tools="http://schemas.android.com/tools">
+
+        <ImageView
+            android:id="@+id/ticker_logo_image"
+            android:contentDescription="@string/img_content_desc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:background="@drawable/rectangle_rounded_medium_variant"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/ticker_logo_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@{ticker}"
+            app:autoSizeStepGranularity="1sp"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="12sp"
+            app:autoSizeMinTextSize="8sp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textColor="@color/colorOnSurfaceVariant"
+            tools:targetApi="o" />
+    </FrameLayout>
+</layout>

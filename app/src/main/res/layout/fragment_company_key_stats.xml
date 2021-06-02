@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="com.yabu.floor.utils.NumberFormatUtils"/>
+        <import type="com.yabu.floor.data.Status"/>
+        <import type="com.yabu.floor.data.model.iex.KeyStats"/>
+        <import type="android.view.View"/>
+        <variable
+            name="status"
+            type="androidx.databinding.ObservableField&lt;Status&gt;" />
+        <variable
+            name="keyStats"
+            type="androidx.databinding.ObservableField&lt;KeyStats&gt;" />
+        <variable
+            name="handler"
+            type="com.yabu.floor.ui.company.CompanyKeyStatsFragmentHandler" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/company_key_stats_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="@dimen/padding_medium"
+        android:longClickable="true"
+        android:hapticFeedbackEnabled="true"
+        tools:context=".ui.company.CompanyDataFragment">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/key_stats_title"
+            style="@style/Text"
+            android:drawablePadding="@dimen/padding_small"
+            android:paddingVertical="@dimen/padding_medium"
+            app:drawableStartCompat="@drawable/ic_chart_pie" />
+
+        <LinearLayout
+            android:id="@+id/company_key_stats_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/padding_medium"
+            android:paddingHorizontal="@dimen/padding_large"
+            android:background="@drawable/rectangle_rounded_large"
+            android:backgroundTint="@color/colorSurfaceVariant"
+            tools:ignore="UselessParent"
+            android:visibility="@{status == Status.SUCCESS ? View.VISIBLE : View.GONE}">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/key_stats_market_cap_title"
+                    style="@style/Text"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:textStyle="bold"
+                    android:text="@{NumberFormatUtils.INSTANCE.formatLargeNumber(keyStats.marketCap)}"
+                    tools:text="14T"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_medium">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/key_stats_52_week_high_title"
+                    style="@style/Text"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:textStyle="bold"
+                    android:text="@{@string/two_decimal_template(keyStats.week52high)}"
+                    tools:text="14.80"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_medium">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/key_stats_52_week_low_title"
+                    style="@style/Text"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:textStyle="bold"
+                    android:text="@{@string/two_decimal_template(keyStats.week52low)}"
+                    tools:text="14.80"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_medium">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/key_stats_52_week_change_title"
+                    style="@style/Text"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:textStyle="bold"
+                    android:text="@{@string/two_decimal_template(keyStats.week52change)}"
+                    tools:text="14%"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_medium">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/key_stats_year_to_date_change_title"
+                    style="@style/Text"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:textStyle="bold"
+                    android:text="@{@string/percent(keyStats.ytdChangePercent)}"
+                    tools:text="14.80"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_medium">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/key_stats_day_50_moving_average_title"
+                    style="@style/Text"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:textStyle="bold"
+                    android:text="@{@string/two_decimal_template(keyStats.day50MovingAvg)}"
+                    tools:text="14.80"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_medium">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/key_stats_day_200_moving_average_title"
+                    style="@style/Text"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:textStyle="bold"
+                    android:text="@{@string/two_decimal_template(keyStats.day200MovingAvg)}"
+                    tools:text="14.80"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_medium">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/key_stats_pe_title"
+                    style="@style/Text"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:textStyle="bold"
+                    android:text="@{@string/two_decimal_template(keyStats.peRatio)}"
+                    tools:text="14.80"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_medium">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/key_stats_eps_title"
+                    style="@style/Text"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:textStyle="bold"
+                    android:text="@{@string/dollar_template(keyStats.eps)}"
+                    tools:text="$2.00"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_medium">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/key_stats_dividend_yield_title"
+                    style="@style/Text"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:textStyle="bold"
+                    android:text="@{@string/percent(keyStats.dividendYield)}"
+                    tools:text="3.2%"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_medium">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/key_stats_next_earnings_date_title"
+                    style="@style/Text"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:textStyle="bold"
+                    android:text="@{keyStats.nextEarningsDate ?? @string/key_stats_not_available}"
+                    tools:text="N/A"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_medium">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/key_stats_next_dividend_date_title"
+                    style="@style/Text"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:textStyle="bold"
+                    android:text="@{keyStats.nextDividendDate ?? @string/key_stats_not_available}"
+                    tools:text="N/A"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

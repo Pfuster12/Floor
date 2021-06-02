@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <import type="com.yabu.floor.data.model.portfolio.Portfolio"/>
+        <import type="android.view.View"/>
+        <variable name="portfolio"
+            type="Portfolio" />
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:padding="@dimen/padding_medium"
+        android:background="?selectableItemBackground"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            tools:ignore="UselessParent">
+
+            <com.yabu.floor.ui.components.clippedimageview.ClippedImageView
+                android:contentDescription="@string/portfolio_logo_content_desc"
+                android:layout_width="@dimen/portfolio_list_item_logo_dimen"
+                android:layout_height="@dimen/portfolio_list_item_logo_dimen"
+                tools:src="@drawable/rectangle_rounded_medium_primary_surface_clipped_ripple"
+                android:src="@drawable/rectangle_rounded_medium_primary_surface_clipped_ripple"
+                android:background="@drawable/rectangle_rounded_small"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@tools:sample/lorem/random"
+                android:maxLines="2"
+                android:textStyle="bold"
+                android:ellipsize="end"
+                style="@style/Subtitle"
+                android:gravity="center_vertical"
+                android:layout_marginHorizontal="@dimen/padding_medium"
+                android:text="@{portfolio.name}"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
