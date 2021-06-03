@@ -1,6 +1,7 @@
 package com.yabu.floor.ui.home
 
 import androidx.lifecycle.ViewModel
+import com.yabu.floor.data.model.portfolio.Portfolio
 import com.yabu.floor.data.repositories.IEXCloudRepository
 import com.yabu.floor.data.repositories.PortfolioRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,6 +13,10 @@ class HomeViewModel @Inject constructor(
     private val iexRepository: IEXCloudRepository) : ViewModel() {
 
     suspend fun querySearch(keyword: String) = iexRepository.querySearch(keyword)
+
+    suspend fun moveItem(from: Int, to: Int, portfolio: Portfolio?) {
+        repository.moveItem(from, to, portfolio)
+    }
 
     suspend fun getPortfolio(id: String) = repository.get(id)
 

@@ -8,13 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- Use DrawerLayout as root container for activity -->
-        <androidx.drawerlayout.widget.DrawerLayout
-            android:id="@+id/drawer_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true">
-
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/nav_host_fragment"
                 android:name="androidx.navigation.fragment.NavHostFragment"
@@ -22,17 +15,5 @@
                 android:layout_height="match_parent"
                 app:defaultNavHost="true"
                 app:navGraph="@navigation/nav_graph"/>
-
-            <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
-            <com.google.android.material.navigation.NavigationView
-                android:id="@+id/nav_view"
-                app:menu="@menu/nav_menu"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="start"
-                android:background="@color/colorSurface"
-                android:fitsSystemWindows="true" />
-
-        </androidx.drawerlayout.widget.DrawerLayout>
     </FrameLayout>
 </layout>

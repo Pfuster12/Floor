@@ -1,6 +1,6 @@
 package com.yabu.floor.data.repositories
 
-import com.yabu.floor.data.local.qoala.SearchHistoryDao
+import com.yabu.floor.data.local.floor.SearchHistoryDao
 import com.yabu.floor.data.model.search.SearchHistoryItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

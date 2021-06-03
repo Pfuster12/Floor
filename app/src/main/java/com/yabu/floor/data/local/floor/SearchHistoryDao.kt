@@ -1,4 +1,4 @@
-package com.yabu.floor.data.local.qoala
+package com.yabu.floor.data.local.floor
 
 import androidx.room.*
 import com.yabu.floor.data.model.search.SearchHistoryItem

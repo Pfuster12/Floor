@@ -58,7 +58,6 @@ class Portfolio(@PrimaryKey
 
     /**
      * Adds a unique ticker to the Portfolio list.
-     * Only accepts 20 items at a time.
      */
     fun add(ticker: Ticker): Boolean {
         return if (items.size < 25) {
@@ -82,5 +81,16 @@ class Portfolio(@PrimaryKey
      */
     fun remove(ticker: String): Boolean {
         return items.removeIf { it.ticker.id == ticker}
+    }
+
+    /**
+     * Move item in the Portfolio.
+     * @param from
+     * @param to
+     */
+    fun move(from: Int, to: Int) {
+        val item = items[from]
+        items.remove(item)
+        items.add(to, item)
     }
 }

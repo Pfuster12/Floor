@@ -25,7 +25,6 @@ import com.yabu.floor.data.model.portfolio.Portfolio
 import com.yabu.floor.data.model.portfolio.PortfolioItem
 import com.yabu.floor.databinding.FragmentHomeBinding
 import com.yabu.floor.ui.company.CompanyDetailFragment
-import com.yabu.floor.ui.main.MainActivity
 import com.yabu.floor.ui.settings.features.Feature
 import com.yabu.floor.ui.settings.features.FeatureToggleHelper
 import com.yabu.floor.utils.OnRecyclerViewItemClick
@@ -61,6 +60,8 @@ class HomeFragment : Fragment(),
 
     private val portfolioItems: MutableList<PortfolioItem> = mutableListOf()
 
+    private var portfolio: Portfolio? = null
+
     private val itemTouchHelper by lazy {
         // 1. Note that I am specifying all 4 directions.
         //    Specifying START and END also allows
@@ -92,16 +93,18 @@ class HomeFragment : Fragment(),
                 override fun onMove(recyclerView: RecyclerView,
                                     viewHolder: RecyclerView.ViewHolder,
                                     target: RecyclerView.ViewHolder): Boolean {
+                    lifecycleScope.launch {
+                        val adapter = recyclerView.adapter as PortfolioRecyclerViewAdapter
+                        val from = viewHolder.absoluteAdapterPosition
+                        val to = target.absoluteAdapterPosition
+                        // 2. Update the backing model. Custom implementation in
+                        //    MainRecyclerViewAdapter. You need to implement
+                        //    reordering of the backing model inside the method.
+                        viewModel.moveItem(from, to, portfolio)
 
-                    val adapter = recyclerView.adapter as PortfolioRecyclerViewAdapter
-                    val from = viewHolder.adapterPosition
-                    val to = target.adapterPosition
-                    // 2. Update the backing model. Custom implementation in
-                    //    MainRecyclerViewAdapter. You need to implement
-                    //    reordering of the backing model inside the method.
-                    adapter.moveItem(from, to)
-                    // 3. Tell adapter to render the model update.
-                    adapter.notifyItemMoved(from, to)
+                        // 3. Tell adapter to render the model update.
+                        adapter.notifyItemMoved(from, to)
+                    }
 
                     return true
                 }
@@ -158,7 +161,7 @@ class HomeFragment : Fragment(),
 
     private fun getPortfolioItems(name: String) {
         lifecycleScope.launch {
-            val portfolio = viewModel.getPortfolio(name)
+            portfolio = viewModel.getPortfolio(name)
 
             if (portfolio == null) {
                 resourceStatus.set(Status.ERROR)
@@ -167,7 +170,7 @@ class HomeFragment : Fragment(),
 
             resourceStatus.set(Status.SUCCESS)
             portfolioItems.clear()
-            portfolioItems.addAll(portfolio.items)
+            portfolioItems.addAll(portfolio?.items ?: listOf())
 
             // Once we have the portfolio tickers, we can send out calls to
             // fetch the quotes and historical data for the chart.

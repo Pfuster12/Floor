@@ -1,4 +1,4 @@
-package com.yabu.floor.data.local.qoala
+package com.yabu.floor.data.local.floor
 
 import android.content.Context
 import androidx.room.Database

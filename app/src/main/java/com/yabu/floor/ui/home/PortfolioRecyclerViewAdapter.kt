@@ -3,11 +3,18 @@ package com.yabu.floor.ui.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.robinhood.ticker.TickerUtils
 import com.yabu.floor.data.model.portfolio.PortfolioItem
+import com.yabu.floor.data.repositories.PortfolioRepository
 import com.yabu.floor.databinding.PortfolioItemBinding
 import com.yabu.floor.utils.OnRecyclerViewItemClick
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * Adapter for a Portfolio.
@@ -37,10 +44,6 @@ class PortfolioRecyclerViewAdapter(private val items: List<PortfolioItem>,
         viewState = state
     }
 
-    fun moveItem(from: Int, to: Int) {
-
-    }
-
     override fun getItemCount() = items.size
 
     class PortfolioItemViewHolder(private val binding: PortfolioItemBinding,
@@ -51,7 +54,7 @@ class PortfolioRecyclerViewAdapter(private val items: List<PortfolioItem>,
         }
 
         override fun onClick(v: View) {
-            onClickListener.onItemClick(v, adapterPosition)
+            onClickListener.onItemClick(v, absoluteAdapterPosition)
         }
 
         fun bind(item: PortfolioItem, viewType: PortfolioVewState) {

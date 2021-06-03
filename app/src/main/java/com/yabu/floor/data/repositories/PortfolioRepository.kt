@@ -1,11 +1,13 @@
 package com.yabu.floor.data.repositories
 
 import androidx.lifecycle.LiveData
-import com.yabu.floor.data.local.qoala.PortfolioDao
-import com.yabu.floor.data.local.qoala.QoalaDatabase
+import com.yabu.floor.data.local.floor.PortfolioDao
+import com.yabu.floor.data.local.floor.QoalaDatabase
 import com.yabu.floor.data.model.portfolio.Portfolio
 import com.yabu.floor.data.model.portfolio.PortfolioItem
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -80,6 +82,13 @@ class PortfolioRepository @Inject constructor(private val db: PortfolioDao) {
     suspend fun update(portfolio: Portfolio) {
         withContext(Dispatchers.IO) {
             db.update(portfolio)
+        }
+    }
+
+    suspend fun moveItem(from: Int, to: Int, portfolio: Portfolio?) {
+        portfolio?.move(from, to)
+        withContext(Dispatchers.IO) {
+            //db.update(portfolio)
         }
     }
 }

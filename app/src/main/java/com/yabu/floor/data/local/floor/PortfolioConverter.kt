@@ -1,4 +1,4 @@
-package com.yabu.floor.data.local.qoala
+package com.yabu.floor.data.local.floor
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson

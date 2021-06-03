@@ -1,4 +1,4 @@
-package com.yabu.floor.data.local.qoala
+package com.yabu.floor.data.local.floor
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
@@ -28,7 +28,7 @@ interface PortfolioDao {
     suspend fun insert(portfolio: Portfolio): Long
 
     @Update
-    suspend fun update(portfolio: Portfolio): Int
+    suspend fun update(portfolio: Portfolio?): Int
 
     @Delete
     suspend fun delete(portfolio: Portfolio)
