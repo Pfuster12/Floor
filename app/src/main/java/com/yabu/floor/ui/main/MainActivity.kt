@@ -2,18 +2,12 @@ package com.yabu.floor.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
-import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.navigation.NavigationView
 import com.yabu.floor.R
 import com.yabu.floor.data.model.portfolio.Portfolio
 import com.yabu.floor.databinding.ActivityMainBinding
-import com.yabu.floor.ui.account.AccountActivity
 import com.yabu.floor.ui.splash.SplashActivity
 import com.yabu.floor.utils.OnlyLaunch
 import com.yabu.floor.utils.Utils
@@ -21,7 +15,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-
 
 /**
  * Launcher [AppCompatActivity] for Floored.
