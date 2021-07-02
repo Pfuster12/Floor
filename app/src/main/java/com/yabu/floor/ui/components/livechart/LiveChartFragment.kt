@@ -106,6 +106,9 @@ class LiveChartFragment : Fragment(),
                              includeToday: Boolean? = false,
                              chartCloseOnly: Boolean? = true) {
         coroutine.launch {
+            binding.livechartError.visibility = View.GONE
+            binding.livechartLoader.visibility = View.VISIBLE
+            binding.livechartLiveChart.visibility = View.INVISIBLE
             val res = viewModel.getChartHistoricalDataset(symbol,
                 range,
                 chartInterval,
@@ -126,7 +129,10 @@ class LiveChartFragment : Fragment(),
                     }
                 }
                 Status.LOADING -> {}
-                Status.ERROR -> Log.d(logtag, "Error fetching chart data: ${res.message}")
+                Status.ERROR -> {
+                    binding.livechartError.visibility = View.VISIBLE
+                    Log.d(logtag, "Error fetching chart data: ${res.message}")
+                }
             }
         }
     }
@@ -177,6 +183,9 @@ class LiveChartFragment : Fragment(),
             binding.livechartLiveChart.setDataset(intradayDataset)
                 .setSecondDataset(historicalDataset)
         }
+
+        binding.livechartLiveChart.visibility = View.VISIBLE
+        binding.livechartLoader.visibility = View.GONE
 
         binding.livechartLiveChart
             .setLiveChartStyle(liveChartStyle)

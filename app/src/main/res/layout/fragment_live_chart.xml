@@ -27,8 +27,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="@dimen/padding_medium"
-            android:visibility="@{status == null ? View.VISIBLE : View.GONE}"/>
+            android:layout_marginBottom="@dimen/padding_medium"/>
 
         <TextView
             android:id="@+id/livechart_error"
@@ -42,7 +41,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="gone"
             android:text="@string/livechart_dataset_error"
             app:drawableTint="@color/colorOnSurfaceVariant"
             app:drawableTopCompat="@drawable/ic_baseline_error_outline_24" />
